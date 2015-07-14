@@ -6,7 +6,6 @@ import sys
 import config
 
 config = config.config
-
 usage = '''
    usage: 
 
@@ -35,14 +34,18 @@ class DB(object):
 
   def add_tasks(self,db,new_tasks):
 
-    for task in new_tasks:
-      print 'adding task %s' % (task)
-      self.f.write(task+'\n')
+    task_string = '\n'.join(new_tasks)
+    self.f.write(task_string)
 
   def get_latest(self):
 
     self.f.seek(0)
     return self.f.readlines()[-1]
+
+  def show_all_tasks(self):
+
+    print self.f.read()
+    self.f.seek(0)
 
   def remove_latest(self):
 
@@ -53,8 +56,10 @@ class DB(object):
     # write all but the last of those back
 
     self.f.seek(0);
+    self.f.truncate() # 0 it
     self.f.write(''.join(content[:-1]))
     #self.f.flush()
+    self.f.seek(0);
     self.f.seek(0);
     print self.f.read()
     self.f.seek(0);
@@ -90,7 +95,6 @@ def administration_interface():
 
   if answer in ('Y','y',''):
     admin_panel = AdminPanel()
-    print "admin_panel.run()"
 
 def get_latest_task(db,i=-1):
   try:
@@ -98,29 +102,32 @@ def get_latest_task(db,i=-1):
   except indexError:
     print 'that index doesnt exist'
     sys.exit(1)
+
+def insert_at(index):
+  pass
   
 
 def main():
 
   db = DB(config['config_file'])
- 
-  if sys.argv[1] in ('-h','--help'):
-    usage()
 
-  if len(sys.argv) < 2:
-    print len(sys.argv)
-    usage()
+  if len(sys.argv) == 1:
+
+    db.show_all_tasks()
+    
+  # if sys.argv[1] in ('-h','--help'):
+  #  usage()
 
   else:
+
     action, tasks = sys.argv[1], sys.argv[2:]
 
     if action == 'add':
       db.add_tasks(db,tasks)
-      print action + 'ing' + ','.join(sys.argv[2:])
 
     if action == 'top':
       print 'getting latest ...'
-      print db.get_latest(db)
+      print db.get_latest()
 
     if action == 'pop':
       db.remove_latest()
