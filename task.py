@@ -31,8 +31,6 @@ class DB(object):
       print "The file doesn't exist, quitting."
       sys.exit()
 
-    print 'file exists'
-
     self.f = open(handle,'r+')
 
   def add_tasks(self,db,new_tasks):
@@ -55,16 +53,18 @@ class DB(object):
     # write all but the last of those back
 
     self.f.seek(0);
-    self.f.write(content[:-1])
-        
-    self.f.flush()
+    self.f.write(''.join(content[:-1]))
+    #self.f.flush()
     self.f.seek(0);
     print self.f.read()
     self.f.seek(0);
     
-def usage(msg=usage):
-  
+def usage(msg=usage, exits=True):
+  ''' exits to False if you don't want to exit the program ''' 
+
   print msg
+  if exits:
+    sys.exit()
 
 class AdminPanel(object):
 
@@ -103,11 +103,13 @@ def get_latest_task(db,i=-1):
 def main():
 
   db = DB(config['config_file'])
+ 
+  if sys.argv[1] in ('-h','--help'):
+    usage()
 
   if len(sys.argv) < 2:
     print len(sys.argv)
     usage()
-    sys.exit()
 
   else:
     action, tasks = sys.argv[1], sys.argv[2:]
@@ -122,6 +124,5 @@ def main():
 
     if action == 'pop':
       db.remove_latest()
-
 
 main()
