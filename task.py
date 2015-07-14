@@ -28,20 +28,27 @@ class DB(object):
 
     print 'file exists'
 
-    self.f = open(handle,'a')
+    self.f = open(handle,'r+')
 
-  def read(self):
-    return self.f.read()
+  def add_tasks(self,db,new_tasks):
 
-  def readlines(self):
-    return self.f.readlines()
+    for task in new_tasks:
+      print 'adding task %s' % (task)
+      self.f.write(task+'\n')
 
-  def write(self, content):
-    return self.f.write(content + '\n')
- 
-  def appendTo(self):
-    pass
+  def get_latest(self):
+    self.f.seek(0)
+    return self.f.readlines()[-1]
 
+  def remove_latest(self):
+    self.f.seek(0)
+    content = self.f.read()
+    self.f.seek(0);
+    self.f.write(content[:-1])
+    self.f.seek(0);
+    print self.f.read()
+    self.f.seek(0);
+    
 def usage():
   print '''usage: 
 
@@ -52,8 +59,6 @@ def usage():
      task add <task1> <task2> <task3> ... 
  
   '''
-def get_one_task(db):
-  pass
 
 class AdminPanel(object):
 
@@ -81,27 +86,34 @@ def administration_interface():
     admin_panel = AdminPanel()
     print "admin_panel.run()"
 
-def add_tasks(db,new_tasks):
-
-  for task in new_tasks:
-    #new_task(task)
-    print 'adding task %s' % (task)
-
-  #administration_interface(db)
+def get_latest_task(db,i=-1):
+  try:
+    db.get_task[i]
+  except indexError:
+    print 'that index doesnt exist'
+    sys.exit(1)
+  
 
 def main():
 
   db = DB(config['config_file'])
 
-  actions = ['top','pop','add'] 
   if len(sys.argv) < 2:
     usage()
     sys.exit()
 
   else:
-    action = sys.argv[1]
+    action, tasks = sys.argv[1], sys.argv[2:]
+
     if action == 'add':
-      add_tasks(db,sys.argv[2:])
+      db.add_tasks(db,tasks)
       print action + 'ing' + ','.join(sys.argv[2:])
+
+    if action == 'top':
+      print 'getting latest ...'
+      print db.get_latest(db)
+
+    if action == 'pop':
+      db.remove_latest()
 
 main()
