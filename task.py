@@ -3,7 +3,18 @@
 import os
 import sys
 
-import config
+from config import config
+
+'''
+   usage: 
+
+     task top (shows top of stack)
+
+     task pop (removes top of stack)
+
+     task add <task1> <task2> <task3> ... 
+ 
+'''
 
 class DB(object):
  
@@ -11,7 +22,7 @@ class DB(object):
 
   def __init__(self,handle):
 
-    if not os.path.fileexists(handle):
+    if not os.path.isfile(handle):
       print "The file doesn't exist, quitting."
       sys.exit()
 
@@ -31,19 +42,18 @@ class DB(object):
   def appendTo(self):
     pass
 
-def new_task(name,_db=db):
-  _db = open(_db,'a')
-  _db.write(sys.argv[1] + '\n')
-
 def usage():
-  print 'task: give one word to describe the task.\n To add a list, separate by whitespace.'
+  print '''usage: 
 
+     task top (shows top of stack)
+
+     task pop (removes top of stack)
+
+     task add <task1> <task2> <task3> ... 
+ 
+  '''
 def get_one_task(db):
   pass
-
-def admin_panel():
-  pass
-
 
 class AdminPanel(object):
 
@@ -69,20 +79,29 @@ def administration_interface():
 
   if answer in ('Y','y',''):
     admin_panel = AdminPanel()
-    admin_panel.run()
+    print "admin_panel.run()"
 
 def add_tasks(db,new_tasks):
 
   for task in new_tasks:
-    new_task(task)
+    #new_task(task)
+    print 'adding task %s' % (task)
 
-  administration_interface(db)
+  #administration_interface(db)
 
 def main():
-  new_tasks = sys.argv[1:]
+
   db = DB(config['config_file'])
 
-  if __name__ == '__main__':
-    add_tasks(db,new_tasks)
+  actions = ['top','pop','add'] 
+  if len(sys.argv) < 2:
+    usage()
+    sys.exit()
+
+  else:
+    action = sys.argv[1]
+    if action == 'add':
+      add_tasks(db,sys.argv[2:])
+      print action + 'ing' + ','.join(sys.argv[2:])
 
 main()
