@@ -3,16 +3,21 @@
 import os
 import sys
 
-from config import config
+import config
 
-'''
+config = config.config
+
+usage = '''
    usage: 
 
      task top (shows top of stack)
 
      task pop (removes top of stack)
 
-     task add <task1> <task2> <task3> ... 
+     task add <task1> <task2> <task3> ... (adds tasks one by one) 
+
+       <task> is a single word describing the task.
+       Quote your input to express a multiple-word sequence
  
 '''
 
@@ -37,28 +42,29 @@ class DB(object):
       self.f.write(task+'\n')
 
   def get_latest(self):
+
     self.f.seek(0)
     return self.f.readlines()[-1]
 
   def remove_latest(self):
+
     self.f.seek(0)
-    content = self.f.read()
+    content = self.f.readlines()
+    # split doc into lines
+    # take any lines w/ length doc into lines
+    # write all but the last of those back
+
     self.f.seek(0);
     self.f.write(content[:-1])
+        
+    self.f.flush()
     self.f.seek(0);
     print self.f.read()
     self.f.seek(0);
     
-def usage():
-  print '''usage: 
-
-     task top (shows top of stack)
-
-     task pop (removes top of stack)
-
-     task add <task1> <task2> <task3> ... 
- 
-  '''
+def usage(msg=usage):
+  
+  print msg
 
 class AdminPanel(object):
 
@@ -99,6 +105,7 @@ def main():
   db = DB(config['config_file'])
 
   if len(sys.argv) < 2:
+    print len(sys.argv)
     usage()
     sys.exit()
 
@@ -115,5 +122,6 @@ def main():
 
     if action == 'pop':
       db.remove_latest()
+
 
 main()
