@@ -1,6 +1,6 @@
 ## MEMT
 
-  `memt` is a command-line memt management tool.  It's right now only for singles.  The default allows only single words without description to identify memts. You can mark memts done with an 'x', remove a memt by number, or the most recent, clear all the memts, or just view the last one.  I envision it as a short-game tool when it comes to command-line creative work.  It also may just be completely useless, we'll see.
+  `memt` is a command-line memt management tool.  It's right now only for singles.  The default allows only single words without description to identify things you want to remember to do. You can mark memts as done with an 'x', remove a memt by number, or the most recent, clear all the memts, or just view the most recent one.  I envision it as a memory tool when it comes to command-line creative work.  It also may just be completely useless, we'll see.
 
 ## Installation - just Unix & BSD so far ... :( 
 
