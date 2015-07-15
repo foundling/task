@@ -38,11 +38,17 @@ Quote your input to store a multiple-word sequence.
 
 
 ## To Do
+
+#### what people will probably do, from most to least frequent
 - looking
 - adding
 - removing last
 - seeing last
 
++ change name
+  - memt
+  - mem
+  - mt
 
 + improve config to allow at least the following:
   - precede a completed task with an 'x' instead of deleting it, aka an optional history
