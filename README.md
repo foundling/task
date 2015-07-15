@@ -1,7 +1,7 @@
 ## Task
 A really simple command-line task manager
 
-## Installation:
+## Installation - ust Unix & BSD so far ... :( 
 
 + put the top-level directory in your path
 + run `task`
