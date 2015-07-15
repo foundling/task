@@ -2,6 +2,8 @@
 
   `memt` is a command-line memt management tool.  It's right now only for singles.  The default allows only single words without description to identify things you want to remember to do. You can mark memts as done with an 'x', remove a memt by number, or the most recent, clear all the memts, or just view the most recent one.  I envision it as a memory tool when it comes to command-line creative work.  It also may just be completely useless, we'll see.
 
+The script installs a .memtrc and .memt/memt.db in your $HOME directory. The database is just a flat file as of now.
+
 ## Installation - just Unix & BSD so far ... :( 
 
 + put the top-level directory in your path
