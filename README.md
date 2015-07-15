@@ -6,6 +6,8 @@ A really simple command-line task manager
 
 ```
 
+task (prints out current tasks)
+
 task -h, --help (prints this usage message)
 
 task add <task1> <task2> <task3> ... (adds tasks one by one) 
