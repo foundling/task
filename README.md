@@ -38,5 +38,11 @@ Quote your input to store a multiple-word sequence.
 
 
 ## To Do
+- looking
+- adding
+- removing last
+- seeing last
+
+
 + improve config to allow at least the following:
   - precede a completed task with an 'x' instead of deleting it, aka an optional history
