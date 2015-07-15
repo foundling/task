@@ -1,6 +1,11 @@
 ## Task
 A really simple command-line task manager
 
+## Installation:
+
++ put the top-level directory in your path
++ run `task`
+
 
 ## Usage: 
 
