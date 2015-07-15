@@ -3,6 +3,22 @@ import sys
 
 home = os.path.expanduser('~')
 
+usage = '''
+   usage: 
+
+     task top (shows top of stack)
+
+     task pop (removes top of stack)
+
+     task add <task1> <task2> <task3> ... (adds tasks one by one) 
+
+       <task> is a single word describing the task.
+       Quote your input to express a multiple-word sequence
+ 
+'''
+
+
+
 
 config = { 
   'data': {},

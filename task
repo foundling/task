@@ -5,24 +5,10 @@ __version__ = "0.0.1"
 import os
 import sys
 
-from config import config
+from config import config, usage
 from database import DB 
 
-usage = '''
-   usage: 
-
-     task top (shows top of stack)
-
-     task pop (removes top of stack)
-
-     task add <task1> <task2> <task3> ... (adds tasks one by one) 
-
-       <task> is a single word describing the task.
-       Quote your input to express a multiple-word sequence
- 
-'''
-
-def usage(msg=usage, exits=True):
+def usage(msg=usage,exits=True):
   ''' set 'exits' to False if you don't want to exit the program ''' 
 
   sys.stdout.write(msg)
@@ -39,9 +25,10 @@ def main(db):
 
   if len(sys.argv) == 2:
     
-    action = sys.argv[1]
+    action = sys.argv[1].strip()
 
-    if action in ('-h','--help'):
+    if action == '-h' or action == '--help':
+      print 'ABC'
       usage()
 
     if action == 'add':
@@ -75,13 +62,12 @@ def init():
   if not os.path.exists(_dir):
     os.makedirs(_dir) 
 
-  for f in _data_files:
-    if not os.path.exists(f):
-      open(f,'w').close() 
+  for df in _data_files:
+    if not os.path.exists(df):
+      open(df,'w').close() 
 
   
 if __name__ == '__main__':
   init()
   db = DB(config['data']['database_file'])
-  print db.db_file
   main(db)
