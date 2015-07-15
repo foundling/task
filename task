@@ -1,12 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
-import os
 import sys
 
-from db import DB
-import config
+from config import config
+from database import DB 
 
-config = config.config
 usage = '''
    usage: 
 
@@ -27,6 +25,7 @@ def usage(msg=usage, exits=True):
   sys.stdout.write(msg)
   if exits:
     sys.exit()
+
 
 
 def main(db):
@@ -64,8 +63,8 @@ def main(db):
     else: 
       sys.stdout.write('unrecognized option %s' % action)
 
+
+
 if __name__ == '__main__':
-  if not os.path.isfile(config['test_config_file']):
-    open(config['test_config_file'],'w').close()
   db = DB(config['test_config_file'])
   main(db)
