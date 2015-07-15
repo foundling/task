@@ -16,10 +16,9 @@ task pop (removes top of stack)
 
 task top (shows top of stack)
 
-
-What a task is:
-a <task> is a single word describing a task you want to get done.
-Quote your input to express a multiple-word sequence
+What is a task?
+a <task> is by default a single word describing a task you want to get done.
+Quote your input to store a multiple-word sequence.
 ``` 
 
 
