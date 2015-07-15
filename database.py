@@ -8,6 +8,7 @@ class DB(object):
   def __init__(self,handle):
 
     if not os.path.isfile(handle):
+      # raise an exception here?
       sys.stdout.write("The file doesn't exist, quitting.")
       sys.exit()
 
