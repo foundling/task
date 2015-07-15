@@ -1,5 +1,6 @@
 ## Task
-A really simple command-line task manager
+
+MEMT is a command-line task management tool.  It's right now only for singles.  The default allows only single words without description to identify tasks. You can mark tasks done with an 'x', remove a task by number, or the most recent, clear all the tasks, or just view the last one.  I envision it as a short-game tool when it comes to command-line creative work.  It also may just be completely useless, we'll see.
 
 ## Installation - just Unix & BSD so far ... :( 
 
@@ -39,11 +40,13 @@ Quote your input to store a multiple-word sequence.
 
 ## To Do
 
-#### what people will probably do, from most to least frequent
+#### review command-line hierarchy semantics with what people will probably do in mind, from most to least frequent
 - looking
 - adding
-- removing last
+- marking last as done
 - seeing last
+- clearing
+- 
 
 + change name
   - memt
@@ -51,4 +54,7 @@ Quote your input to store a multiple-word sequence.
   - mt
 
 + improve config to allow at least the following:
-  - precede a completed task with an 'x' instead of deleting it, aka an optional history
+  - an optional history on two levels:
+    + one: precede a completed task with an 'x' instead of deleting it, so you can see what you completed
+    + two: offer some stats on when the tasks were completed use a decorator to write dates/times somewhere upon each write (maybe use a decorator)
+
