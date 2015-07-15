@@ -22,6 +22,6 @@ Quote your input to store a multiple-word sequence.
 ``` 
 
 
-# To Do
+## To Do
 + improve config to allow at least the following:
   - precede a completed task with an 'x' instead of deleting it
