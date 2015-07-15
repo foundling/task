@@ -6,7 +6,7 @@ Sometimmes when I'm working, i might have an interesting idea and in comes my mo
 
 Other times, when i'm working on an especially tough part of a project, I have one wrong idea for a while and then all of a sudden, I get a lot of ideas at once. It's nice to be able to store that info in rapid, succint succesion.
 
-Plus, with all the reading and digesting of stuff, the need for a list becomes clearer.  But not a list to end all lists. Just a normal, functional list, that keeps your thoughts as long as you think they're valid.
+Plus, with all the reading and digesting of stuff, the need for a list becomes clearer.  But not a list to end all lists. Just a normal, functional list, that keeps your thoughts ... sorry, memts ... as long as you think they're valid.
 
 `memt` is a command-line task/idea management tool that aims to be minimal by allowing only single words without description to identify particular actions you want to remember to do. Or ideas that you had. Or albums you liked. You can mark memts as done with an 'x', remove a memt by number, remove the most recent memt, clear all the memts, view them all or just view the most recent one.  I envision it as a memory tool for command-line creative work.  It also may just be completely useless, we'll see.
 
