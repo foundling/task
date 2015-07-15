@@ -1,6 +1,6 @@
 ## MEMT
 
-  `memt` is a command-line task/idea management tool.  It's right now only for singles.  The default allows only single words without description to identify things you want to remember to do. You can mark memts as done with an 'x', remove a memt by number, remove the most recent, clear all the memts, view them all or just view the most recent one.  I envision it as a memory tool when it comes to command-line creative work.  It also may just be completely useless, we'll see.
+  `memt` is a command-line task/idea management tool.  It's right now only for singles.  The default allows only single words without description to identify things you want to remember to do. You can mark memts as done with an 'x', remove a memt by number, remove the most recent, clear all the memts, view them all or just view the most recent one.  I envision it as a memory tool for command-line creative work.  It also may just be completely useless, we'll see.
 
 MEMT will install a .memtrc and .memt/memt.db in your $HOME directory. 
 
