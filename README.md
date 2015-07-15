@@ -2,7 +2,7 @@
 
 #### Some use cases for Memt
 
-Sometimmes when I'm working, i might have an interesting idea and in comes my more productive self, basically pulling rank with a cordial SIGTERM.  I forget whatever idea I had in my head but would like it back.
+Sometimes when I'm working, i might have an interesting idea and in comes my more productive self, basically pulling rank with a cordial SIGTERM.  I forget whatever idea I had in my head but would like it back.
 
 Other times, when i'm working on an especially tough part of a project, I have one wrong idea for a while and then all of a sudden, I get a lot of ideas at once. It's nice to be able to store that info in rapid, succint succesion.
 
