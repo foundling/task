@@ -1,6 +1,6 @@
 ## MEMT
 
-#### Some use cases
+#### Some use cases for Memt
 
 Sometimmes when I'm working, i might have an interesting idea and in comes my more productive self, basically pulling rank with a cordial SIGTERM.  I forget whatever idea I had in my head but would like it back.
 
