@@ -3,6 +3,7 @@
 import os
 import sys
 
+from db import DB
 import config
 
 config = config.config
@@ -20,116 +21,51 @@ usage = '''
  
 '''
 
-class DB(object):
- 
-  ''' a small database class to organize the db operations.'''
-
-  def __init__(self,handle):
-
-    if not os.path.isfile(handle):
-      print "The file doesn't exist, quitting."
-      sys.exit()
-
-    self.f = open(handle,'r+')
-
-  def add_tasks(self,db,new_tasks):
-
-    task_string = '\n'.join(new_tasks)
-    self.f.write(task_string)
-
-  def get_latest(self):
-
-    self.f.seek(0)
-    return self.f.readlines()[-1]
-
-  def show_all_tasks(self):
-
-    print self.f.read()
-    self.f.seek(0)
-
-  def remove_latest(self):
-
-    self.f.seek(0)
-    content = self.f.readlines()
-    # split doc into lines
-    # take any lines w/ length doc into lines
-    # write all but the last of those back
-
-    self.f.seek(0);
-    self.f.truncate() # 0 it
-    self.f.write(''.join(content[:-1]))
-    #self.f.flush()
-    self.f.seek(0);
-    self.f.seek(0);
-    print self.f.read()
-    self.f.seek(0);
-    
 def usage(msg=usage, exits=True):
-  ''' exits to False if you don't want to exit the program ''' 
+  ''' set 'exits' to False if you don't want to exit the program ''' 
 
-  print msg
+  sys.stdout.write(msg)
   if exits:
     sys.exit()
 
-class AdminPanel(object):
 
-  def __init__():
-    pass
-
-  def run():
-    while True:
-      pass
-
-  def voice_problem():
-		problem = raw_input('problem description:').strip()
-		# gh pull req here 
-
-
-def administration_interface():
-
-  response = raw_input('administration here! need anything done?' + '\n')
-  answer = response.strip()
-
-  if answer in ('n','N','q','Q'):
-    sys.exit()
-
-  if answer in ('Y','y',''):
-    admin_panel = AdminPanel()
-
-def get_latest_task(db,i=-1):
-  try:
-    db.get_task[i]
-  except indexError:
-    print 'that index doesnt exist'
-    sys.exit(1)
-
-def insert_at(index):
-  pass
-  
-
-def main():
-
-  db = DB(config['config_file'])
-
+def main(db):
+ 
   if len(sys.argv) == 1:
 
     db.show_all_tasks()
+
+  if len(sys.argv) == 2:
     
-  # if sys.argv[1] in ('-h','--help'):
-  #  usage()
+    action = sys.argv[1]
 
-  else:
+    if action in ('-h','--help'):
+      usage()
 
+    if action == 'add':
+      usage() 
+
+    if action == 'top':
+      db.top()
+
+    if action == 'pop':
+      db.pop()
+
+    if action == 'clear':
+      db.clear()
+
+  if len(sys.argv) > 2:
+    
     action, tasks = sys.argv[1], sys.argv[2:]
 
     if action == 'add':
       db.add_tasks(db,tasks)
 
-    if action == 'top':
-      print 'getting latest ...'
-      print db.get_latest()
+    else: 
+      sys.stdout.write('unrecognized option %s' % action)
 
-    if action == 'pop':
-      db.remove_latest()
-
-main()
+if __name__ == '__main__':
+  if not os.path.isfile(config['test_config_file']):
+    open(config['test_config_file'],'w').close()
+  db = DB(config['test_config_file'])
+  main(db)
