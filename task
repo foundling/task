@@ -12,23 +12,19 @@ def usage(msg=usage,exits=True):
   ''' set 'exits' to False if you don't want to exit the program ''' 
 
   sys.stdout.write(msg)
+
   if exits:
     sys.exit()
-
-
 
 def main(db):
  
   if len(sys.argv) == 1:
-
     db.show_all_tasks()
 
   if len(sys.argv) == 2:
-    
     action = sys.argv[1].strip()
 
     if action == '-h' or action == '--help':
-      print 'ABC'
       usage()
 
     if action == 'add':
@@ -66,8 +62,8 @@ def init():
     if not os.path.exists(df):
       open(df,'w').close() 
 
-  
 if __name__ == '__main__':
   init()
   db = DB(config['data']['database_file'])
   main(db)
+  print len(sys.argv)

@@ -1,3 +1,4 @@
 # To Do
-+ improve config to allow at least the following:
-  - precede a completed task with an 'x' instead of deleting it
+- add click or docopt for cli stuff
+- regenerate schema, and commit that the project, dingus!
+- read into packaging http://www.aosabook.org/en/packaging.html
